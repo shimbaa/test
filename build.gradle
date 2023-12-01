@@ -15,3 +15,8 @@ java {
 test {
     useJUnitPlatform()
 }
+
+dependencies {
+    implementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
