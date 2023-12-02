@@ -1,39 +1,39 @@
 package codesquad.cardmatching.step1;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Map;
 
 public class GameCards {
-    private final List<Card> cards;
+    private static final int FIRST_ROW = 1;
+    private static final int SECOND_ROW = 2;
+    private static final int THIRD_ROW = 3;
+    private final Map<Integer, List<Card>> cards;
 
-    public static GameCards create() {
-        return new GameCards();
+    public static GameCards from(List<Card> gameCards) {
+        return new GameCards(gameCards);
     }
 
-    private GameCards() {
-        this.cards = getGameCards();
+    private GameCards(List<Card> gameCards) {
+        this.cards = new HashMap<>();
+        initGameCards(gameCards);
     }
 
-    private List<Card> getGameCards() {
-        List<Card> deck = getDeck();
-        Collections.shuffle(deck);
-        return deck.subList(0, 18);
+    private void initGameCards(List<Card> gameCards) {
+        cards.put(FIRST_ROW, getFirstRow(gameCards));
+        cards.put(SECOND_ROW, getSecondRow(gameCards));
+        cards.put(THIRD_ROW, getThirdRow(gameCards));
     }
 
-    private List<Card> getDeck() {
-        return Stream.generate(GameCards::getCards)
-                .limit(3)
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
+    private List<Card> getFirstRow(List<Card> gameCards) {
+        return gameCards.subList(0, 6);
     }
 
+    private List<Card> getSecondRow(List<Card> gameCards) {
+        return gameCards.subList(6, 12);
+    }
 
-    private static List<Card> getCards() {
-        return Arrays.stream(CardType.values())
-                .map(Card::from)
-                .collect(Collectors.toList());
+    private List<Card> getThirdRow(List<Card> gameCards) {
+        return gameCards.subList(12, 18);
     }
 }
