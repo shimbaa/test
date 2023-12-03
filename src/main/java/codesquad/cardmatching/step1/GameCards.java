@@ -1,13 +1,11 @@
 package codesquad.cardmatching.step1;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GameCards {
-    private static final int FIRST_ROW = 1;
-    private static final int SECOND_ROW = 2;
-    private static final int THIRD_ROW = 3;
     private final Map<Integer, List<Card>> cards;
 
     public static GameCards from(List<Card> gameCards) {
@@ -19,10 +17,14 @@ public class GameCards {
         initGameCards(gameCards);
     }
 
+    public GameCardsDTO getGameCardsDTO() {
+        return GameCardsDTO.from(Collections.unmodifiableMap(cards));
+    }
+
     private void initGameCards(List<Card> gameCards) {
-        cards.put(FIRST_ROW, getFirstRow(gameCards));
-        cards.put(SECOND_ROW, getSecondRow(gameCards));
-        cards.put(THIRD_ROW, getThirdRow(gameCards));
+        cards.put(Row.FIRST.getValue(), getFirstRow(gameCards));
+        cards.put(Row.SECOND.getValue(), getSecondRow(gameCards));
+        cards.put(Row.THIRD.getValue(), getThirdRow(gameCards));
     }
 
     private List<Card> getFirstRow(List<Card> gameCards) {

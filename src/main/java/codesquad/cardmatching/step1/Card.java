@@ -5,12 +5,19 @@ import java.util.Objects;
 public class Card {
     private final CardType cardType;
 
+    private CardStatus cardStatus;
+
     public static Card from(CardType cardType) {
         return new Card(cardType);
     }
 
     private Card(CardType cardType) {
         this.cardType = cardType;
+        this.cardStatus = CardStatus.NOT_MATCHED;
+    }
+
+    public String getStatus() {
+        return cardStatus.toString();
     }
 
     @Override
@@ -28,10 +35,5 @@ public class Card {
     @Override
     public int hashCode() {
         return Objects.hash(cardType);
-    }
-
-    @Override
-    public String toString() {
-        return cardType.getValue();
     }
 }
