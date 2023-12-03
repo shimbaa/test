@@ -2,6 +2,8 @@ package codesquad.cardmatching.step1;
 
 import static org.assertj.core.api.Assertions.*;
 
+import codesquad.cardmatching.step1.domain.Card;
+import codesquad.cardmatching.step1.domain.CardType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

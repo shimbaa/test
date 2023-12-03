@@ -1,5 +1,7 @@
 package codesquad.cardmatching.step1;
 
+import codesquad.cardmatching.step1.domain.Card;
+import codesquad.cardmatching.step1.domain.Row;
 import java.util.List;
 import java.util.Map;
 

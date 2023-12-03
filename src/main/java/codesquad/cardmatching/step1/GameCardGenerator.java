@@ -1,5 +1,7 @@
 package codesquad.cardmatching.step1;
 
+import codesquad.cardmatching.step1.domain.Card;
+import codesquad.cardmatching.step1.domain.CardType;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

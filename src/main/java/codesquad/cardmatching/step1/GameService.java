@@ -1,5 +1,7 @@
 package codesquad.cardmatching.step1;
 
+import codesquad.cardmatching.step1.domain.GameCards;
+
 public class GameService {
 
     private GameCards gameCards;
