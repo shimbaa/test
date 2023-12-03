@@ -1,10 +1,9 @@
 package codesquad.cardmatching.step1.domain;
 
-import codesquad.cardmatching.step1.GameCardsDTO;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GameCards {
     private final Map<Integer, List<Card>> cards;
@@ -18,8 +17,14 @@ public class GameCards {
         initGameCards(gameCards);
     }
 
-    public GameCardsDTO getGameCardsDTO() {
-        return GameCardsDTO.from(Collections.unmodifiableMap(cards));
+    public Map<Integer, List<String>> getCardStatus() {
+        return cards.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .map(Card::getStatus)
+                                .collect(Collectors.toList())
+                ));
     }
 
     private void initGameCards(List<Card> gameCards) {

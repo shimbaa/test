@@ -11,6 +11,6 @@ public class GameService {
     }
 
     public GameCardsDTO getGameCardDTO() {
-        return gameCards.getGameCardsDTO();
+        return GameCardsDTO.from(gameCards.getCardStatus());
     }
 }

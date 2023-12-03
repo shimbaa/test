@@ -1,40 +1,26 @@
 package codesquad.cardmatching.step1;
 
-import codesquad.cardmatching.step1.domain.Card;
 import codesquad.cardmatching.step1.domain.Coordinate;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class View {
     private static final Scanner scanner = new Scanner(System.in);
     private static final String SPACE = " ";
+    private static final String FIRST_INPUT = "입력 1? ";
+    private static final String SECOND_INPUT = "입력 2? ";
 
     public static void printCardStatus(GameCardsDTO dto) {
-        List<Card> firstRow = dto.getFirstRow();
-        System.out.println(getRowStatus(firstRow));
-
-        List<Card> secondRow = dto.getSecondRow();
-        System.out.println(getRowStatus(secondRow));
-
-        List<Card> thirdRow = dto.getThirdRow();
-        System.out.println(getRowStatus(thirdRow));
-    }
-
-    private static String getRowStatus(List<Card> row) {
-        return row.stream()
-                .map(Card::getStatus)
-                .collect(Collectors.joining(SPACE));
+        dto.getCards().forEach((key, value) -> System.out.println(String.join(SPACE, value)));
     }
 
     public static Coordinate getFirstCoordinate() {
-        System.out.print("입력 1? ");
+        System.out.print(FIRST_INPUT);
         String input = readLine();
         return Util.convertToCoordinate(input);
     }
 
     public static Coordinate getSecondCoordinate() {
-        System.out.print("입력 2? ");
+        System.out.print(SECOND_INPUT);
         String input = readLine();
         return Util.convertToCoordinate(input);
     }
