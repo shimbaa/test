@@ -1,4 +1,4 @@
-package codesquad.cardmatching.step1;
+package codesquad.cardmatching.step1.domain;
 
 public enum Row {
     FIRST(1),

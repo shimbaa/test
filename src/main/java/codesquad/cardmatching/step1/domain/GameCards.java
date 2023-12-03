@@ -1,5 +1,6 @@
-package codesquad.cardmatching.step1;
+package codesquad.cardmatching.step1.domain;
 
+import codesquad.cardmatching.step1.GameCardsDTO;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
