@@ -13,7 +13,7 @@ public class Coordinate {
     private Coordinate(int row, int column) {
         validate(row, column);
         this.row = row;
-        this.column = column;
+        this.column = column - 1;
     }
 
     public int getRow() {

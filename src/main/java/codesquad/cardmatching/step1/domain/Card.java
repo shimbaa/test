@@ -20,6 +20,10 @@ public class Card {
         return cardStatus.toString();
     }
 
+    public String getCardType() {
+        return cardType.getValue();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -11,8 +11,10 @@ public class Controller {
         GameCardsDTO gameCardDTO = gameService.getGameCardDTO();
         printInitialCardStatus(gameCardDTO);
 
-        Coordinate coordinates = getFirstCoordinates();
+        Coordinate firstCoordinates = getFirstCoordinates();
         Coordinate secondCoordinates = getSecondCoordinates();
+        GameCardsDTO queriedStatus = gameService.getQueriedStatus(firstCoordinates, secondCoordinates);
+        View.printCardStatus(queriedStatus);
     }
 
     private void printInitialCardStatus(GameCardsDTO gameCardDTO) {

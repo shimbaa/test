@@ -27,6 +27,13 @@ public class GameCards {
                 ));
     }
 
+    public String getCardTypeByCoordinate(Coordinate coordinate) {
+        int row = coordinate.getRow();
+        int column = coordinate.getColumn();
+
+        return cards.get(row).get(column).getCardType();
+    }
+
     private void initGameCards(List<Card> gameCards) {
         cards.put(Row.FIRST.getValue(), getFirstRow(gameCards));
         cards.put(Row.SECOND.getValue(), getSecondRow(gameCards));
