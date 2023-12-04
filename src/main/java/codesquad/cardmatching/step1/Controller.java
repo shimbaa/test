@@ -26,6 +26,7 @@ public class Controller {
 
             gameService.increaseTrialNumber();
         } while (!gameService.isGameFinishCondition());
+        View.printGameFinishMessage();
     }
 
     private void printInputRequestMessage() {
