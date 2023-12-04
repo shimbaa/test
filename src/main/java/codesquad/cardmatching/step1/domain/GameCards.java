@@ -43,6 +43,10 @@ public class GameCards {
         return notMatchedCards.size() == 0;
     }
 
+    public int getCountOfNotMatchedCards() {
+        return getNotMatchedCards().size();
+    }
+
     private List<Card> getNotMatchedCards() {
         return cards.values().stream()
                 .flatMap(List::stream)

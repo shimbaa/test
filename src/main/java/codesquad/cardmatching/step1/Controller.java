@@ -12,6 +12,8 @@ public class Controller {
         printInitialCardStatus(gameCardDTO);
 
         do {
+            printInputRequestMessage();
+
             Coordinate firstCoordinates = getFirstCoordinates();
             Coordinate secondCoordinates = getSecondCoordinates();
 
@@ -21,7 +23,15 @@ public class Controller {
             gameService.compareQueriedCards(firstCoordinates, secondCoordinates);
             GameCardsDTO comparedResult = gameService.getGameCardDTO();
             View.printCardStatus(comparedResult);
-        } while (gameService.isGameFinishCondition());
+
+            gameService.increaseTrialNumber();
+        } while (!gameService.isGameFinishCondition());
+    }
+
+    private void printInputRequestMessage() {
+        int trialNumber = gameService.getTrialNumber();
+        int countOfNotMatchedCards = gameService.getCountOfNotMatchedCards();
+        View.printGameInfoAndRequestMessage(trialNumber, countOfNotMatchedCards);
     }
 
     private void printInitialCardStatus(GameCardsDTO gameCardDTO) {

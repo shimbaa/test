@@ -8,6 +8,7 @@ import java.util.List;
 public class GameService {
 
     private GameCards gameCards;
+    private int trialNumber = 1;
 
     public void initGameCards(List<Card> cards) {
         gameCards = GameCards.from(cards);
@@ -35,6 +36,18 @@ public class GameService {
         Card firstCard = gameCards.getCardByCoordinate(first);
         Card secondCard = gameCards.getCardByCoordinate(second);
         compare(firstCard, secondCard);
+    }
+
+    public int getCountOfNotMatchedCards() {
+        return gameCards.getCountOfNotMatchedCards();
+    }
+
+    public int getTrialNumber() {
+        return trialNumber;
+    }
+
+    public void increaseTrialNumber() {
+        this.trialNumber += 1;
     }
 
     private void compare(Card firstCard, Card secondCard) {
