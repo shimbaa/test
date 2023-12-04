@@ -1,5 +1,6 @@
 package codesquad.cardmatching.step1.domain;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,28 @@ public class GameCards {
 
     public Card getCardByCoordinate(Coordinate coordinate) {
         return cards.get(coordinate.getRow()).get(coordinate.getColumn());
+    }
+
+    public boolean isMatchingCardsExist() {
+        List<Card> notMatchedCards = getNotMatchedCards();
+        long count = getCountOfPair(notMatchedCards);
+        return count != 0;
+    }
+
+    private List<Card> getNotMatchedCards() {
+        return cards.values().stream()
+                .flatMap(List::stream)
+                .filter(card -> card.getStatus().equals(CardStatus.NOT_MATCHED.toString()))
+                .toList();
+    }
+
+    private long getCountOfPair(List<Card> notMatchedCards) {
+        return Arrays.stream(CardType.values())
+                .map(cardType -> notMatchedCards.stream()
+                        .filter(card -> card.getCardType().equals(cardType.getValue()))
+                        .count())
+                .filter(cardCount -> cardCount >= 2)
+                .count();
     }
 
     private void initGameCards(List<Card> gameCards) {

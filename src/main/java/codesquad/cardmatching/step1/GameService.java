@@ -27,6 +27,10 @@ public class GameService {
         return dto;
     }
 
+    public boolean isMatchingCardsExist() {
+        return gameCards.isMatchingCardsExist();
+    }
+
     public void compareQueriedCards(Coordinate first, Coordinate second) {
         Card firstCard = gameCards.getCardByCoordinate(first);
         Card secondCard = gameCards.getCardByCoordinate(second);
