@@ -11,11 +11,14 @@ public class Controller {
         GameCardsDTO gameCardDTO = gameService.getGameCardDTO();
         printInitialCardStatus(gameCardDTO);
 
+        Coordinate firstCoordinates;
+        Coordinate secondCoordinates;
+
         do {
             printInputRequestMessage();
 
-            Coordinate firstCoordinates = getFirstCoordinates();
-            Coordinate secondCoordinates = getSecondCoordinates();
+            firstCoordinates = getFirstCoordinates();
+            secondCoordinates = getSecondCoordinates();
 
             GameCardsDTO queriedStatus = gameService.getQueriedStatus(firstCoordinates, secondCoordinates);
             View.printCardStatus(queriedStatus);
@@ -41,7 +44,9 @@ public class Controller {
 
     private Coordinate getFirstCoordinates() {
         try {
-            return View.getFirstCoordinate();
+            Coordinate firstCoordinate = View.getFirstCoordinate();
+            gameService.validateIsMatchedCardCoordinate(firstCoordinate);
+            return firstCoordinate;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getFirstCoordinates();
@@ -50,7 +55,9 @@ public class Controller {
 
     private Coordinate getSecondCoordinates() {
         try {
-            return View.getSecondCoordinate();
+            Coordinate secondCoordinate = View.getSecondCoordinate();
+            gameService.validateIsMatchedCardCoordinate(secondCoordinate);
+            return secondCoordinate;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getSecondCoordinates();

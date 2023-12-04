@@ -1,6 +1,7 @@
 package codesquad.cardmatching.step1;
 
 import codesquad.cardmatching.step1.domain.Card;
+import codesquad.cardmatching.step1.domain.CardStatus;
 import codesquad.cardmatching.step1.domain.Coordinate;
 import codesquad.cardmatching.step1.domain.GameCards;
 import java.util.List;
@@ -48,6 +49,17 @@ public class GameService {
 
     public void increaseTrialNumber() {
         this.trialNumber += 1;
+    }
+
+    public void validateIsMatchedCardCoordinate(Coordinate coordinate) {
+        if (isMatchedCardCoordinate(coordinate)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isMatchedCardCoordinate(Coordinate coordinate) {
+        Card card = gameCards.getCardByCoordinate(coordinate);
+        return card.getStatus().equals(CardStatus.MATCHED.toString());
     }
 
     private void compare(Card firstCard, Card secondCard) {
