@@ -31,13 +31,6 @@ public class GameCards {
         return cards.get(coordinate.getRow()).get(coordinate.getColumn());
     }
 
-    public void compare(Card firstCard, Card secondCard) {
-        if (firstCard.equals(secondCard)) {
-            firstCard.changeCardStatusToMatched();
-            secondCard.changeCardStatusToMatched();
-        }
-    }
-
     private void initGameCards(List<Card> gameCards) {
         cards.put(Row.FIRST.getValue(), getFirstRow(gameCards));
         cards.put(Row.SECOND.getValue(), getSecondRow(gameCards));

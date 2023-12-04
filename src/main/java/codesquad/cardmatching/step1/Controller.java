@@ -7,7 +7,7 @@ public class Controller {
     private final GameService gameService = new GameService();
 
     public void run() {
-        gameService.initGameCards();
+        gameService.initGameCards(GameCardGenerator.newGameCards());
         GameCardsDTO gameCardDTO = gameService.getGameCardDTO();
         printInitialCardStatus(gameCardDTO);
 
