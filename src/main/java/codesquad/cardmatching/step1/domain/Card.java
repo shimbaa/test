@@ -24,6 +24,10 @@ public class Card {
         return cardType.getValue();
     }
 
+    public void changeCardStatusToMatched() {
+        this.cardStatus = CardStatus.MATCHED;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

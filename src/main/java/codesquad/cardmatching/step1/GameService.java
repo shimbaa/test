@@ -1,5 +1,6 @@
 package codesquad.cardmatching.step1;
 
+import codesquad.cardmatching.step1.domain.Card;
 import codesquad.cardmatching.step1.domain.Coordinate;
 import codesquad.cardmatching.step1.domain.GameCards;
 
@@ -25,8 +26,15 @@ public class GameService {
         return dto;
     }
 
+    public void compareQueriedCards(Coordinate first, Coordinate second) {
+        Card firstCard = gameCards.getCardByCoordinate(first);
+        Card secondCard = gameCards.getCardByCoordinate(second);
+        gameCards.compare(firstCard, secondCard);
+    }
+
     private String getCardTypeByCoordinate(Coordinate coordinate) {
-        return gameCards.getCardTypeByCoordinate(coordinate);
+        Card card = gameCards.getCardByCoordinate(coordinate);
+        return card.getCardType();
     }
 
     private void convertStatusToCardType(GameCardsDTO dto, Coordinate coordinate, String cardType) {

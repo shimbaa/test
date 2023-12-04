@@ -27,11 +27,15 @@ public class GameCards {
                 ));
     }
 
-    public String getCardTypeByCoordinate(Coordinate coordinate) {
-        int row = coordinate.getRow();
-        int column = coordinate.getColumn();
+    public Card getCardByCoordinate(Coordinate coordinate) {
+        return cards.get(coordinate.getRow()).get(coordinate.getColumn());
+    }
 
-        return cards.get(row).get(column).getCardType();
+    public void compare(Card firstCard, Card secondCard) {
+        if (firstCard.equals(secondCard)) {
+            firstCard.changeCardStatusToMatched();
+            secondCard.changeCardStatusToMatched();
+        }
     }
 
     private void initGameCards(List<Card> gameCards) {

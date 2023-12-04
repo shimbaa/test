@@ -11,10 +11,17 @@ public class Controller {
         GameCardsDTO gameCardDTO = gameService.getGameCardDTO();
         printInitialCardStatus(gameCardDTO);
 
-        Coordinate firstCoordinates = getFirstCoordinates();
-        Coordinate secondCoordinates = getSecondCoordinates();
-        GameCardsDTO queriedStatus = gameService.getQueriedStatus(firstCoordinates, secondCoordinates);
-        View.printCardStatus(queriedStatus);
+        do {
+            Coordinate firstCoordinates = getFirstCoordinates();
+            Coordinate secondCoordinates = getSecondCoordinates();
+
+            GameCardsDTO queriedStatus = gameService.getQueriedStatus(firstCoordinates, secondCoordinates);
+            View.printCardStatus(queriedStatus);
+
+            gameService.compareQueriedCards(firstCoordinates, secondCoordinates);
+            GameCardsDTO comparedResult = gameService.getGameCardDTO();
+            View.printCardStatus(comparedResult);
+        } while (true);
     }
 
     private void printInitialCardStatus(GameCardsDTO gameCardDTO) {

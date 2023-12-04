@@ -11,6 +11,7 @@ public class View {
 
     public static void printCardStatus(GameCardsDTO dto) {
         dto.getCards().forEach((key, value) -> System.out.println(String.join(SPACE, value)));
+        System.out.println();
     }
 
     public static Coordinate getFirstCoordinate() {
