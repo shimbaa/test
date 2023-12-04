@@ -31,7 +31,6 @@ public class View {
         return Util.convertToCoordinate(input);
     }
 
-    //    모든 카드를 맞추거나 더 이상 남은 짝이 없을 경우 축하메시지를 출력하고 종료한다.
     public static void printGameFinishMessage() {
         System.out.println("축하합니다! 게임 종료");
     }
