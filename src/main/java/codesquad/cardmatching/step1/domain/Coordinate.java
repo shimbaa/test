@@ -1,5 +1,7 @@
 package codesquad.cardmatching.step1.domain;
 
+import java.util.Objects;
+
 public class Coordinate {
     private static final String ROW_OUT_OF_RANGE = "행의 값은 1에서 3사이여야 합니다.";
     private static final String COLUMN_OUT_OF_RANGE = "열의 값은 1에서 6사이여야 합니다.";
@@ -39,5 +41,22 @@ public class Coordinate {
         if (column < 1 || column > 6) {
             throw new IllegalArgumentException(COLUMN_OUT_OF_RANGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Coordinate that = (Coordinate) o;
+        return row == that.row && column == that.column;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, column);
     }
 }

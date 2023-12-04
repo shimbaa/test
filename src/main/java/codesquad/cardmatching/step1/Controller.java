@@ -18,7 +18,7 @@ public class Controller {
             printInputRequestMessage();
 
             firstCoordinates = getFirstCoordinates();
-            secondCoordinates = getSecondCoordinates();
+            secondCoordinates = getSecondCoordinates(firstCoordinates);
 
             GameCardsDTO queriedStatus = gameService.getQueriedStatus(firstCoordinates, secondCoordinates);
             View.printCardStatus(queriedStatus);
@@ -53,14 +53,15 @@ public class Controller {
         }
     }
 
-    private Coordinate getSecondCoordinates() {
+    private Coordinate getSecondCoordinates(Coordinate firstCoordinate) {
         try {
             Coordinate secondCoordinate = View.getSecondCoordinate();
             gameService.validateIsMatchedCardCoordinate(secondCoordinate);
+            gameService.validateIsSameCoordinate(firstCoordinate, secondCoordinate);
             return secondCoordinate;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return getSecondCoordinates();
+            return getSecondCoordinates(firstCoordinate);
         }
     }
 }

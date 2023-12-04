@@ -8,6 +8,8 @@ import java.util.List;
 
 public class GameService {
 
+    private static final String INVALID_COORDINATE_BY_MATCHED_CARD = "이미 제거된 카드의 좌표가 아닌 값을 입력해주세요";
+    private static final String SAME_COORDINATE = "같은 좌표를 입력할 수 없습니다.";
     private GameCards gameCards;
     private int trialNumber = 1;
 
@@ -51,9 +53,15 @@ public class GameService {
         this.trialNumber += 1;
     }
 
+    public void validateIsSameCoordinate(Coordinate first, Coordinate second) {
+        if (first.equals(second)) {
+            throw new IllegalArgumentException(SAME_COORDINATE);
+        }
+    }
+
     public void validateIsMatchedCardCoordinate(Coordinate coordinate) {
         if (isMatchedCardCoordinate(coordinate)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_COORDINATE_BY_MATCHED_CARD);
         }
     }
 
