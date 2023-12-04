@@ -36,6 +36,10 @@ public class View {
         System.out.println("축하합니다! 게임 종료");
     }
 
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+    }
+
     private static String readLine() {
         return scanner.nextLine();
     }
