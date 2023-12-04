@@ -27,8 +27,8 @@ public class GameService {
         return dto;
     }
 
-    public boolean isMatchingCardsExist() {
-        return gameCards.isMatchingCardsExist();
+    public boolean isGameFinishCondition() {
+        return !gameCards.isMatchingCardsExist() || gameCards.isAllCardsMatched();
     }
 
     public void compareQueriedCards(Coordinate first, Coordinate second) {

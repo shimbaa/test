@@ -21,7 +21,7 @@ public class Controller {
             gameService.compareQueriedCards(firstCoordinates, secondCoordinates);
             GameCardsDTO comparedResult = gameService.getGameCardDTO();
             View.printCardStatus(comparedResult);
-        } while (gameService.isMatchingCardsExist());
+        } while (gameService.isGameFinishCondition());
     }
 
     private void printInitialCardStatus(GameCardsDTO gameCardDTO) {

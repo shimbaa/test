@@ -38,6 +38,11 @@ public class GameCards {
         return count != 0;
     }
 
+    public boolean isAllCardsMatched() {
+        List<Card> notMatchedCards = getNotMatchedCards();
+        return notMatchedCards.size() == 0;
+    }
+
     private List<Card> getNotMatchedCards() {
         return cards.values().stream()
                 .flatMap(List::stream)
