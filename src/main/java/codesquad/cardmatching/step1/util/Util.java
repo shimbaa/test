@@ -1,4 +1,4 @@
-package codesquad.cardmatching.step1;
+package codesquad.cardmatching.step1.util;
 
 import codesquad.cardmatching.step1.domain.Coordinate;
 import java.util.Arrays;

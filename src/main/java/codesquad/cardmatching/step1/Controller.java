@@ -1,6 +1,7 @@
 package codesquad.cardmatching.step1;
 
 import codesquad.cardmatching.step1.domain.Coordinate;
+import codesquad.cardmatching.step1.util.GameCardGenerator;
 
 public class Controller {
 

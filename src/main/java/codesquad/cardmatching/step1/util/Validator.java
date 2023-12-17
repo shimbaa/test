@@ -1,4 +1,4 @@
-package codesquad.cardmatching.step1;
+package codesquad.cardmatching.step1.util;
 
 
 import org.assertj.core.util.Strings;
