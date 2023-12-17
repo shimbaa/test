@@ -1,5 +1,6 @@
-package codesquad.cardmatching.step1;
+package codesquad.cardmatching.step1.view;
 
+import codesquad.cardmatching.step1.GameCardsDTO;
 import codesquad.cardmatching.step1.domain.Coordinate;
 import codesquad.cardmatching.step1.util.Util;
 import java.util.Scanner;

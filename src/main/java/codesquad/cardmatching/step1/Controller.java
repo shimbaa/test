@@ -2,6 +2,7 @@ package codesquad.cardmatching.step1;
 
 import codesquad.cardmatching.step1.domain.Coordinate;
 import codesquad.cardmatching.step1.util.GameCardGenerator;
+import codesquad.cardmatching.step1.view.View;
 
 public class Controller {
 
